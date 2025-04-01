@@ -1,7 +1,8 @@
 const container = document.querySelector("#container");
 
 let numberOfSideCell = 16;
-let numberOfCell = numberOfSideCell * numberOfSideCell;
+
+//create row of grid
 for (let i = 0; i < numberOfSideCell; i++) {
   const row = document.createElement("div");
   row.classList.add("row");
@@ -10,6 +11,7 @@ for (let i = 0; i < numberOfSideCell; i++) {
 
 const rows = document.querySelectorAll(".row");
 
+//create cells in rows
 rows.forEach((row) => {
   for (let j = 0; j < numberOfSideCell; j++) {
     const cell = document.createElement("div");
@@ -20,14 +22,16 @@ rows.forEach((row) => {
 
 const cells = document.querySelectorAll(".cell");
 
+//check if mouse is pressed
 let mousePressed = false;
 document.addEventListener("mousedown", () => {
   mousePressed = true;
 });
 document.addEventListener("mouseup", () => {
-  mousePressed = true;
+  mousePressed = false;
 });
 
+//change background color if mouseover and pressed
 cells.forEach((cell) => {
   cell.addEventListener("mouseover", (e) => {
     if (mousePressed) {
@@ -36,10 +40,3 @@ cells.forEach((cell) => {
   });
 });
 
-/* cells.forEach((cell) => {
-  cell.addEventListener("mouseleave", (e) => {
-    if(e.button != 1) {
-    e.target.setAttribute("style", "background-color: white;");
-    }
-  });
-}); */
