@@ -16,4 +16,14 @@ rows.forEach((row) => {
         cell.classList.add('cell');
         row.appendChild(cell);
     };
-})
+});
+
+const cells = document.querySelectorAll('.cell');
+
+
+cells.forEach((cell) => {
+    cell.addEventListener('mouseover', (e) => {
+        console.log(e.target);
+        e.target.setAttribute("style","background-color: black;");
+    });
+});

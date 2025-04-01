@@ -4,6 +4,7 @@
     border: black solid 1px;
     display: flex;
     flex-direction: column;
+    margin: 200px auto;
 }
 
 .row {
@@ -12,8 +13,6 @@
     align-items: stretch;
 }
 .cell {
-    width: 30px;
-    
     border: black solid 1px;
     flex-grow: 1;
 }
