@@ -2,14 +2,30 @@ const container = document.querySelector("#container");
 
 let numberOfSideCell = 16;
 
+//resize grid
+const resize = document.querySelector('#resize');
+resize.addEventListener('click', () => {
+    let sizeRequested = parseInt(prompt("Please enter desired size of the SketchPad:"));
+    if (!Number.isInteger(sizeRequested)|| sizeRequested < 2 || sizeRequested > 100) {
+        alert('Invalid Value! Tha side size should be an integer between 2 and 100!');
+    } else {
+        rows.forEach((row) => {
+            container.removeChild(row);
+        })
+    }
+})
+
 //create row of grid
-for (let i = 0; i < numberOfSideCell; i++) {
-  const row = document.createElement("div");
-  row.classList.add("row");
-  container.appendChild(row);
+function CreateRows(numberOfSideCell) {
+    for (let i = 0; i < numberOfSideCell; i++) {
+        const row = document.createElement("div");
+        row.classList.add("row");
+        container.appendChild(row);
+    }
+    return const rows = document.querySelectorAll(".row");
 }
 
-const rows = document.querySelectorAll(".row");
+
 
 //create cells in rows
 rows.forEach((row) => {
@@ -21,6 +37,8 @@ rows.forEach((row) => {
 });
 
 const cells = document.querySelectorAll(".cell");
+
+CreateRows(numberOfSideCell);
 
 //check if mouse is pressed
 let mousePressed = false;
