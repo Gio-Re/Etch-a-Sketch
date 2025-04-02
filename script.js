@@ -70,8 +70,25 @@ function cellsToBlack () {
   });
 };
 
+//function to Random color cells
+function randomColorToCells() {
+  const cells = document.querySelectorAll(".cell");
+  cells.forEach((cell) => {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);  
+    cell.addEventListener("mouseover", (e) => {
+      if (mousePressed) {
+        e.target.setAttribute("style", "background-color: rgb(" + r + "," + g + "," + b + ");");
+      };
+    });
+  });
+
+}
+
 //Call functions to create grid and to default skectch
-let defaultSize = 16;
+const defaultSize = 16;
+let mode;
 CreateGrid(defaultSize);
 cellsToBlack();
 
@@ -83,4 +100,15 @@ resize.addEventListener('click', resizeGrid);
 const reset = document.querySelector("#reset");
 reset.addEventListener('click', resetCells);
 
+//Button Black
+const black = document.querySelector('#black');
+black.addEventListener('click', () => {
+  mode = "black";
+});
+
+//Button Random
+const randomColor = document.querySelector('#randomColor');
+randomColor.addEventListener('click', () => {
+  mode = "randomColor";
+});
 
