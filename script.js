@@ -1,11 +1,9 @@
 const container = document.querySelector("#container");
-
 let numberOfSideCell = 16;
 
-//resize grid
-const resize = document.querySelector('#resize');
-resize.addEventListener('click', () => {
-    let sizeRequested = parseInt(prompt("Please enter desired size of the SketchPad:"));
+//function to resize grid
+function resizeGrid() {
+  let sizeRequested = parseInt(prompt("Please enter desired size of the SketchPad:"));
     if (!Number.isInteger(sizeRequested)|| sizeRequested < 2 || sizeRequested > 100) {
         alert('Invalid Value! Tha side size should be an integer between 2 and 100!');
     } else {
@@ -14,8 +12,22 @@ resize.addEventListener('click', () => {
             container.removeChild(row);
         })
         CreateGrid(sizeRequested);
-    }
-})
+        cellsToBlack();
+    };
+};
+
+//function to black cells
+function cellsToBlack () {
+  const cells = document.querySelectorAll(".cell");
+        cells.forEach((cell) => {
+          cell.addEventListener("mouseover", (e) => {
+            if (mousePressed) {
+              e.target.setAttribute("style", "background-color: black;");
+            };
+          });
+        });
+}
+
 
 //function to create row of grid
 function CreateRows(numberOfSideCell) {
@@ -44,26 +56,20 @@ function CreateGrid(numberOfSideCell) {
   CreateCells(numberOfSideCell);
 };
 
-//Call function to create grid
+//Call functions to create grid and to default skectch
 CreateGrid(numberOfSideCell);
+cellsToBlack();
 
-const cells = document.querySelectorAll(".cell");
+//Button resize
+const resize = document.querySelector('#resize');
+resize.addEventListener('click', resizeGrid);
 
 //check if mouse is pressed
 let mousePressed = false;
-document.addEventListener("mousedown", () => {
+container.addEventListener("mousedown", () => {
   mousePressed = true;
 });
-document.addEventListener("mouseup", () => {
+container.addEventListener("mouseup", () => {
   mousePressed = false;
-});
-
-//change background color if mouseover and pressed
-cells.forEach((cell) => {
-  cell.addEventListener("mouseover", (e) => {
-    if (mousePressed) {
-      e.target.setAttribute("style", "background-color: black;");
-    };
-  });
 });
 
