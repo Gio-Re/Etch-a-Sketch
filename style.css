@@ -30,6 +30,7 @@ h1 {
     width: 600px;
     height: 600px;
     border: black solid 1px;
+    background-color: white;
     display: flex;
     flex-direction: column;
     margin: 10px auto;
