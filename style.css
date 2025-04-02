@@ -37,7 +37,7 @@ h1 {
     align-items: stretch;
 }
 .cell {
-    /*border: black solid 1px;*/
+    border: black solid 1px;
     background-color: white;
     flex-grow: 1;
 }

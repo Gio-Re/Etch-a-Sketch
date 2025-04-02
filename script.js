@@ -5,7 +5,7 @@ let numberOfSideCell = 16;
 //resize grid
 const resize = document.querySelector('#resize');
 resize.addEventListener('click', () => {
-    let sizeRequested = prompt("Please enter desired size of the SketchPad:");
+    let sizeRequested = parseInt(prompt("Please enter desired size of the SketchPad:"));
     if (!Number.isInteger(sizeRequested)|| sizeRequested < 2 || sizeRequested > 100) {
         alert('Invalid Value! Tha side size should be an integer between 2 and 100!');
     } else {
@@ -13,6 +13,7 @@ resize.addEventListener('click', () => {
         rows.forEach((row) => {
             container.removeChild(row);
         })
+        CreateGrid(sizeRequested);
     }
 })
 
@@ -43,6 +44,7 @@ function CreateGrid(numberOfSideCell) {
   CreateCells(numberOfSideCell);
 };
 
+//Call function to create grid
 CreateGrid(numberOfSideCell);
 
 const cells = document.querySelectorAll(".cell");
