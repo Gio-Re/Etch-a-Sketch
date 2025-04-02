@@ -113,7 +113,7 @@ function cellsToShadow() {
 //Call functions to create grid and to default skectch
 const defaultSize = 16;
 CreateGrid(defaultSize);
-cellsToShadow();
+cellsToBlack();
 
 
 //Button Resize
